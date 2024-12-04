@@ -1,23 +1,25 @@
 
 <div class="maincontainer place-content-center text-center opacity-95">
+    <form [formGroup]="loginForm" (submit)="FormSubmit()">
     <h1 class="text-white title p-4">LIFE RPG</h1>
     <div class="max-w-sm p-6 bg-black mx-auto bg-opacity-30 rounded-lg grid-rows-3">
         <div class="mb-8 px-4">
             <h2 class="text-white text-start testo mb-2">USERNAME</h2>
-            <input type="text" class="w-full rounded-sm h-10 p-2 input" placeholder="Inserisci il nome utente">
+            <input type="text" class="w-full rounded-sm h-10 p-2 input" placeholder="Inserisci il nome utente" formControlName="Username">
         </div>
         <div class="mb-10 px-4">
             <h2 class="text-white text-start testo mb-2">PASSWORD</h2>
-            <input type="password" class="w-full rounded-sm h-10 p-2 input" placeholder="Inserisci la Password">
+            <input type="password" class="w-full rounded-sm h-10 p-2 input" placeholder="Inserisci la Password" formControlName="Password">
         </div>
         <div class="grid grid-cols-3 px-4">
-            <button class="text-black bg-white hover:bg-gray-200 h-10 testo">REGISTER</button>
+            <button class="text-black bg-white hover:bg-gray-200 h-10 testo" (click)="Register()">REGISTER</button>
             <div class="px-[50%]">
                 <div class="vertical-line"></div>
             </div>
-            <button class="text-black bg-white hover:bg-gray-200 h-10 testo">LOGIN</button>
+            <button class="text-black bg-white hover:bg-gray-200 h-10 testo" (click)="Login()">LOGIN</button>
         </div>
     </div>
+    </form>
 </div>
 
 <div class="background-image"></div>

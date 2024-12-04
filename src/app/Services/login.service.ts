@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginRequest } from '../Models/login.model';
+import { LoginRequest, RegisterRequest } from '../Models/login.model';
 import { ReturnModel, TokenReturnModel } from '../Models/return.model';
 import { GeneralReturnModel } from '../Models/return.model';
 
@@ -9,14 +9,14 @@ import { GeneralReturnModel } from '../Models/return.model';
 })
 export class LoginService {
 
-  url: string = "https://localhost:7081/api/Auth/login"
+  url: string = "https://localhost:7081/api/Auth/"
   constructor(private http: HttpClient) { }
 
-  login(loginRequest: LoginRequest){
-    return this.http.post<ReturnModel<TokenReturnModel>>(this.url, loginRequest);
+  Login(loginRequest: LoginRequest){
+    return this.http.post<ReturnModel<TokenReturnModel>>(this.url + "login", loginRequest);
   }
 
-  refreshToken(){
+  RefreshToken(){
     if(this.verifyIsLogged()){
       this.CheckRefreshToken().subscribe({next: (response) => {
         if(response.isValid){
@@ -37,6 +37,26 @@ export class LoginService {
 
   private CheckRefreshToken(){
     let token = localStorage.getItem("Token");
-    return this.http.post<ReturnModel<boolean>>(this.url, token)
+    return this.http.post<ReturnModel<boolean>>(this.url + "refresh", token)
+  }
+
+  Logout(){  
+    this.CheckLogOut();
+    this.CheckLogOut().subscribe({next: (result) => {
+      if(!result.isValid){
+        return result.Message;
+      }
+      localStorage.clear();
+      return result.Message
+    }})
+  }
+
+  private CheckLogOut(){
+    let Token = localStorage.getItem("Token");
+    return this.http.post<ReturnModel<boolean>>(this.url, Token);
+  }
+
+  Register(request: RegisterRequest){
+    return this.http.post<ReturnModel<TokenReturnModel>>(this.url + "register", request);
   }
 }
