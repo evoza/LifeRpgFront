@@ -1,0 +1,45 @@
+.maincontainer{  
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    position: absolute;
+    
+}
+
+.title{
+    font-size: x-large;
+    font-family: "JackPot";
+}
+
+.testo{
+    font-size: x-small;
+    font-family: "JackPot";
+}
+
+.input{
+    font-size: medium;
+    font-family: "WhatDo";
+    color: black;
+    font-weight: 200;
+}
+
+.background-image{
+    background-image: url("../../assets/Img/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    filter: blur(4px);
+}
+
+.vertical-line {
+    width: 2px; /* Spessore della linea */
+    height: 100%; /* Altezza della linea */
+    background-color: white; /* Colore della linea */
+
+}
+
+@font-face {
+    font-family: "JackPot";
+    src: url("../../assets/fonts/Jackpot.ttf");
+}
