@@ -16,8 +16,24 @@
                             <div class="bg-green-600 text-xs text-black text-center p-0.5 leading-none rounded-full level-bar font-bold" style="width: 70%"> 70%</div>
                         </div>
                     </div>
-                    <div class="w-[82%] place-content-start relative">
-                        <button class="text-black bg-white hover:bg-gray-200 h-10 testo rounded-md border-2 border-black p-2 right-0 absolute">SETTINGS</button>
+                    <div class="w-[82%] overflow-visible place-content-end grid grid-rows-2">   
+                        <button id="settingsButton" data-dropdown-toggle="settingsDrop" class="text-black bg-white hover:bg-gray-200 h-10 testo rounded-md border-2 border-black p-2 z-50" type="button">SETTINGS</button>
+                        <div id="settingsDrop" class=" bg-white hidden divide-y rounded-lg shadow w-44 border-2 border-solid border-black z-10 absolute">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="settingsButton">
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-600 hover:text-white text-black">Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                                </li>
+                                </ul>
+                        </div>           
                     </div>
                 </div>
             </div>
