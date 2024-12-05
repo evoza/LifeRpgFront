@@ -35,12 +35,14 @@ export class LoginComponent {
       Password: this.loginForm.value.Password!
     }
     this.loginSvc.Login(login).subscribe((result) =>{
+      console.log(result)
       if(!result.isValid){
-        this.modal = result.Message;
+        this.modal = result.Message;        
       }
       else{
         this.modal = result.Message;
-        localStorage.setItem("Token", result.Value.refreshToken);
+        let token = result.value.refreshToken;
+        localStorage.setItem("Token", token);
       }
       console.log(this.modal)
     })

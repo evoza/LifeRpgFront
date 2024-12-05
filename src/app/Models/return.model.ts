@@ -1,7 +1,7 @@
 export interface ReturnModel<T>{
     isValid: boolean,
     Message: string, 
-    Value: T,
+    value: T,
 }
 
 export interface TokenReturnModel{
