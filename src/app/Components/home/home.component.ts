@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { PlayerModel } from '../../Models/player.model';
 import { OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [CommonModule, NavbarComponent, FontAwesomeModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -29,6 +32,11 @@ export class HomeComponent implements OnInit {
     
   }
 
+  settingBtnY = 0;
+  getOffSetY =()=>this.settingBtnY
+
+  settingBtnX = 0;  
+  getOffSetX =()=>this.settingBtnX
   ngOnInit(){
     this.CalculatePlayerLevel();
   }
@@ -36,5 +44,27 @@ export class HomeComponent implements OnInit {
   public CalculatePlayerLevel(){
     let lv = this.playerModel.Exp / 100
     this.playerLevel = lv.toString()
+  }
+  dropShow=false
+
+  openDropDown(){
+    this.dropShow= !this.dropShow
+    const settingsButton = document.getElementById('settingsButton')!;
+    const settingsDrop = document.getElementById('settingsDrop')!;
+    
+    // Calcolare la posizione del bottone rispetto alla pagina
+    const buttonRect = settingsButton.getBoundingClientRect();
+    const dorpRect = settingsDrop.getBoundingClientRect();
+    const dropTranslation = buttonRect.width / 2
+    
+    // Posizionare la dropdown sotto il bottone
+    settingsDrop.style.position = "fixed"; // Usare "absolute" invece di "fixed"
+    settingsDrop.style.zIndex = "9999";
+    settingsDrop.style.top = `${buttonRect.bottom}px`; // Posizionarla sotto il bottone
+    settingsDrop.style.left = `${buttonRect.left}px`; // Allinearla con il bordo sinistro del bottone
+    
+    // Log per debug
+    console.log("y: " + dorpRect.width);
+    console.log("x: " + buttonRect.width );
   }
 }
