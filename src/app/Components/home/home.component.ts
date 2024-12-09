@@ -27,11 +27,15 @@ export class HomeComponent implements OnInit {
     ImgUrl: 'https://i.pinimg.com/736x/b5/59/61/b5596101c9cc2974a45f65bc03547ddc.jpg'
   };
   public playerLevel: string = '';
-  
-  constructor() {
-    
-  }
 
+  friendListIsActive = true;
+  friendSearchIsActive = false;
+  friendRequestIsActive = false;
+  
+  constructor() {}
+
+  //#region Dropdown
+  // Dropdown
   settingBtnY = 0;
   getOffSetY =()=>this.settingBtnY
 
@@ -63,8 +67,38 @@ export class HomeComponent implements OnInit {
     settingsDrop.style.top = `${buttonRect.bottom}px`; // Posizionarla sotto il bottone
     settingsDrop.style.left = `${buttonRect.left}px`; // Allinearla con il bordo sinistro del bottone
     
-    // Log per debug
-    console.log("y: " + dorpRect.width);
-    console.log("x: " + buttonRect.width );
+    
+  }
+  //#endregion
+
+  SetFriendListActive(){
+    if(!this.friendListIsActive){
+      this.friendListIsActive = true;
+      this.friendSearchIsActive = false;
+      this.friendRequestIsActive = false;
+    }
+  }
+
+  SetFriendRequestActive(){
+    if(!this.friendRequestIsActive){
+      this.friendListIsActive = false;
+      this.friendSearchIsActive = false;
+      this.friendRequestIsActive = true;
+    }
+  }
+
+  SetFriendSearchActive(){
+    if(!this.friendSearchIsActive){
+      this.friendListIsActive = false;
+      this.friendSearchIsActive = true;
+      this.friendRequestIsActive = false;
+    }
+  }
+
+  InitializeFriendList(){
+    this.openDropDown()
+    this.friendListIsActive = true;
+    this.friendSearchIsActive = false;
+    this.friendRequestIsActive = false;
   }
 }

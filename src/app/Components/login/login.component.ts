@@ -4,6 +4,7 @@ import { LoginService } from '../../Services/login.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { LoginRequest, RegisterRequest } from '../../Models/login.model';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
